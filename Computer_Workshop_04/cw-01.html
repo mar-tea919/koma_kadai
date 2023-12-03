@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>コンピュータワークショップ4</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+
+      var dateobject = new Date();
+      document.write(dateobject.toLocaleString() + "<br>");
+
+      //   実習1
+      document.writeln(100 + 1);
+      document.writeln(4 * (5 + 2));
+
+      //   実習2 乱数の生成
+      let r = Math.random();
+      r = r * 100 + 1; //乱数は0~99を生成している状況だから1加えておく
+      r = Math.floor(r);
+      document.writeln("乱数: " + r);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webコンテンツ基礎 第一回</title>
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="rensyu.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+
+    <script src="./script/rensyu.js"></script>
+
+    <script>
+      // 演習7
+      console.log("こんにちは")
+      console.log("ここから四則演算")
+      console.log("1+2")
+      console.log("3")
+      console.log(1.5-2)
+      console.log(15*3)
+      console.log(3/2)
+      console.log(3%2)
+
+      // 演習9
+      console.log("ここから変数")
+      let a=10,b=5,c
+      c=a+b
+      console.log(a+"+"+b+"="+c)
+      a=20
+      c=a+b
+      console.log(a+"+"+b+"="+c)
+      a=b+10
+      c=a+b
+      console.log(a+"+"+b+"="+c)
+      console.log(a)
+      a=a+1
+      console.log(a)
+      a++;
+      console.log(a)
+      a+=1
+      console.log(a)
+    </script>
+
+  </head>
+  <body>
+    <div>
+      
+      <div id="header">
+        <h1>GK3185 <span>袴田将虎</span></h1>
+      </div>
+      <h2>所属 <span>GMS学部</span></h2>
+      <p id="intro">静岡県出身です。マイブームは競馬観戦ですが賭けれません。</p>
+      <div>
+        <img src="./src/kouyou_zensen.png" alt="紅葉の画像" width="200px" class="circle" />
+        <img src="./src/kouyou_cat.png" alt="紅葉と猫" width="200px" />
+      </div>
+      <div>
+        <img src="./src/pet_cat_omoi_sleep_woman.png" alt="寝ている女性と猫" width="200px" class="circle">
+        <img src="./src/nikukyu_hai.png" alt="肉球" width="200px" />
+      </div>
+      <hr />
+      <a href="./rensyu02.html">
+        <img src="./src/navi_go.png" alt="練習2へのリンク"/>
+      </a>
+      <ul>
+        <li>仏教学部</li>
+        <li>経済学部</li>
+        <li>GMS学部</li>
+      </ul>
+      <p>時間割</p>
+      <table border="3">
+        <tr>
+          <th>曜日</th>
+          <th>時限</th>
+          <th>科目</th>
+        </tr>
+        <tr>
+          <td rowspan="3">月</td>
+          <td>1</td>
+          <td>International Communication</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Webコンテンツ基礎</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>メディアリテラシー</td>
+        </tr>
+        <tr>
+          <td rowspan="2">火</td>
+          <td>1</td>
+          <td>Oral Communication</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>コンピュータワークショップⅣ</td>
+        </tr>
+        <tr>
+          <td rowspan="2">水</td>
+          <td>1</td>
+          <td>International Communication</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>政治システムを考える</td>
+        </tr>
+        <tr>
+          <td rowspan="3">木</td>
+          <td>1</td>
+          <td>Oral Communication</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>人間の心理を考える</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>心と体を考える</td>
+        </tr>
+        <tr>
+          <td rowspan="3">金</td>
+          <td>1</td>
+          <td>仏教と人間</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>インターネットとメディア</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>健康・スポーツ実習</td>
+        </tr>
+        <tr>
+          <td rowspan="2">土</td>
+          <td>2</td>
+          <td>宗教の見方</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>国際関係とメディア</td>
+        </tr>
+      </table>
+    </div>
+    <a class="goto_pagetop" href="#"><div class="goto_pagetop_arrow"></div></a>
+
+    <div>
+      <p>単位数</p>
+      <table border="1">
+        <tr>
+          <th>卒業要件</th>
+          <td>132単位</td>
+        </tr>
+        <tr>
+          <th>修得単位数</th>
+          <td><input type="number" name="credit" id="credit">単位</td>
+        </tr>
+        <tr>
+          <th>不足単位数</th>
+          <td><span id="husoku">132</span>単位</td>
+        </tr>
+      </table>
+    </div>
+    <script>
+      console.log(window.document.getElementById("intro"))
+      console.log(window.document.getElementById("intro").innerHTML)
+      window.document.getElementById("intro").innerHTML="自己紹介"
+    </script>
+  </body>
+</html>

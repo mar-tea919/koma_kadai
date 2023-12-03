@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+      "use strict";
+      //コンピュータワークショップ4: 第4回課題
+
+      let ctx;
+
+      function run() {
+        //自分のプログラムを書く：ここから
+
+        let x, y;
+        drawCircle(100, 100, 10); // (100,100)に半径10の円を描く
+
+        //自分のプログラムを書く：ここまで
+      }
+
+      onload = function () {
+        //HTMLの準備が出来たら実行
+
+        //HTML5のキャンバスを準備する処理
+        var canvas = document.getElementById("maincanvas");
+        ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+        run();
+      };
+      function drawCircle(x, y, r) {
+        //指定された場所(x,y)に半径rの赤い円を描く
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2, false);
+        ctx.fill();
+      }
+      function getColorString(r, g, b) {
+        //r,g,bで与えられた数値を元に色文字列を作る
+        return (
+          "#" +
+          ("00" + (r % 256).toString(16)).slice(-2) +
+          ("00" + (g % 256).toString(16)).slice(-2) +
+          ("00" + (b % 256).toString(16)).slice(-2)
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <canvas
+      id="maincanvas"
+      width="900"
+      height="600"
+      style="border: solid 1px gray"
+    ></canvas>
+  </body>
+</html>

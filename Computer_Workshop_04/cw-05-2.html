@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+"use strict";
+
+let ctx;
+
+//グローバル変数はここで宣言
+let x1=0,x2=100, dx1=20,dx2=20;
+
+function run(){
+  //自分のプログラムを書く：ここから
+  drawLine(x1,100,x2,200,"red");
+  x1+=dx1;
+  if(x1<0||x1>899){
+    dx1=dx1*-1;
+  }
+  x2+=dx2;
+  if(x2<0||x2>899){
+    dx2=dx2*-1;
+  }
+  setTimeout(run,100);
+
+
+  //自分のプログラムを書く：ここまで
+}
+
+onload=function(){
+  //HTMLの準備が出来たら実行
+  //HTML5のキャンバスを準備する処理
+  var canvas=document.getElementById("maincanvas");
+  ctx=canvas.getContext("2d");
+  run();
+}
+
+//直線を引くための関数
+function drawLine(x1,y1,x2,y2,color){
+  ctx.beginPath();
+  ctx.moveTo(x1,y1);
+  ctx.lineTo(x2,y2);
+  ctx.strokeStyle=color;
+  ctx.stroke();
+}
+
+function getColorString(r,g,b){
+  //r,g,bで与えられた数値を元に色文字列を作る
+  return "#"+("00"+(r%256).toString(16)).slice(-2)+
+  ("00"+(g%256).toString(16)).slice(-2)+
+  ("00"+(b%256).toString(16)).slice(-2);
+}
+
+</script>
+</head>
+<body>
+<canvas id="maincanvas" width="900" height="600" style="border: solid 1px gray;"></canvas>
+</body>
+</html>

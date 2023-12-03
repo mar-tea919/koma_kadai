@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <title>コンピュータワークショップⅣ 01</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+      "use strict";
+
+      document.write("<h1>コンピュータワークショップ: cw-02-2.html<br></h1>");
+
+      function f1() {
+        let val1 = parseInt(document.getElementById("val1").value); //val1を取得
+        let val2 = parseInt(document.getElementById("val2").value); //val2を取得
+
+        let result = val1 + val2;
+
+        document.getElementById("result").value = result; //resultを表示する
+      }
+
+      function f2() {
+        let val1 = parseInt(document.getElementById("val1").value); //val1を取得
+        let val2 = parseInt(document.getElementById("val2").value); //val2を取得
+
+        let result = val1 - val2;
+
+        document.getElementById("result").value = result; //resultを表示する
+      }
+
+      function f3() {
+        let val1 = parseInt(document.getElementById("val1").value); //val1を取得
+        let val2 = parseInt(document.getElementById("val2").value); //val2を取得
+
+        let result = val1 * val2;
+
+        document.getElementById("result").value = result; //resultを表示する
+      }
+
+      function f4() {
+        let val1 = parseInt(document.getElementById("val1").value); //val1を取得
+        let val2 = parseInt(document.getElementById("val2").value); //val2を取得
+
+        let result = val1 / val2;
+
+        document.getElementById("result").value = result; //resultを表示する
+      }
+
+      function f5() {
+        let val1 = parseInt(document.getElementById("val1").value); //val1を取得
+        let val2 = parseInt(document.getElementById("val2").value); //val2を取得
+
+        let result = (val1 + val2) / 2;
+
+        document.getElementById("result").value = result; //resultを表示する
+      }
+
+      function f6() {
+        let val1 = parseInt(document.getElementById("val1").value); //val1を取得
+        let val2 = parseInt(document.getElementById("val2").value); //val2を取得
+
+        let result = val1 ** val2;
+
+        document.getElementById("result").value = result; //resultを表示する
+      }
+    </script>
+  </head>
+  <body>
+    <p>
+      数1<input type="text" id="val1" size="10" /><br />
+      数2<input type="text" id="val2" size="10" /><br />
+    </p>
+    <p>
+      <button onclick="f1();">+</button>
+      <button onclick="f2();">-</button>
+      <button onclick="f3();">×</button>
+      <button onclick="f4();">÷</button>
+
+      <button onclick="f5();">Ave</button>
+      <button onclick="f6();">x^y</button>
+    </p>
+    <p>結果: <input type="text" id="result" size="10" readonly /></p>
+  </body>
+</html>

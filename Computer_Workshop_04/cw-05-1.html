@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+"use strict";
+
+function timerExec(){
+    document.getElementById("targetspan").innerHTML=Date();
+    //上の1行は、HTML内でid=のtargetspanの部分に時間文字列を入れ込む処理
+
+    
+}
+
+</script>
+</head>
+<body onload="timerExec();">
+<p>
+時間： <span id="targetspan"></span>
+</p>
+</body>
+</html>

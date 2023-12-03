@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+      "use strict";
+
+      //グローバル変数の宣言（この部分に追加）
+      let charaObjects=new Array();
+      let canvas, ctx;
+      let mapItem = new Array(); //マップパーツ格納用の配列
+      let charaItem = new Array(); //キャラ画像配列
+      let cx = 100,
+        cy = 100; //c1の座標
+
+      //マップデータの配列：二次元配列の値を変更する
+      let map = [
+        [2, 2, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0],
+        [2, 2, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0],
+        [2, 2, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0],
+        [2, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0],
+        [1, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0],
+        [0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+        [0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 3, 0, 0],
+        [0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 1, 0],
+        [0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 99],
+      ];
+
+      //Characterクラスの定義
+      class Character {
+        constructor(x, y, image) {
+          this.x=x;
+          this.y=y;
+          this.toX=x;
+          this.toY=y;
+          this.image=image;
+        }
+        // キャラクタ移動メソッドの作成
+        moveRight(){
+          if(this.x<map[this.y].length-1&&map[this.y][this.x+1]!=0){
+            this.toX++
+          }
+        }
+
+        moveLeft(){
+          if(this.x>0 && map[this.y][this.x-1]!=0){
+            this.toX--
+          }
+        }
+
+        moveUp(){
+          if (this.y>0 && map[this.y-1][this.x]!=0 ){
+            this.toY--;
+          }
+        }
+
+        moveDown(){
+          if(this.y<map[this.x].length-1&&map[this.y+1][this.x]!=0){
+            this.toY++
+          }
+        }
+
+      }
+
+      function onKeyDown(e){
+        switch(e.keyCode){
+          // キャラ0に対しては方向キーでの操作
+          case 37: /*left*/
+            charaObjects[0].moveLeft()
+            break;
+          case 38: /*up*/
+            charaObjects[0].moveUp()
+            break;
+          case 39:
+            charaObjects[0].moveRight()
+            break;
+          case 40:
+            charaObjects[0].moveDown()
+            break;
+
+          case 65:
+            charaObjects[1].moveLeft()
+            break
+          case 68:
+            charaObjects[1].moveRight()
+            break
+          case 83:
+            charaObjects[1].moveDown()
+            break
+          case 87:
+            charaObjects[1].moveUp()
+            break
+
+          // キャラ2に対してはijklで操作
+          case 73:
+            charaObjects[2].moveUp()
+            break
+          case 74:
+            charaObjects[2].moveLeft()
+            break
+          case 75:
+            charaObjects[2].moveDown()
+            break
+          case 76:
+            charaObjects[2].moveRight()
+            break
+        }
+      }
+
+      //drawCharacters関数の定義
+      function drawCharacters(){
+        for(let n=0;n<charaObjects.length;n++){
+          ctx.drawImage(charaObjects[n].image, charaObjects[n].toX*48, charaObjects[n].toY*48);
+          charaObjects[n].x=charaObjects[n].toX;
+          charaObjects[n].y=charaObjects[n].toY;
+        }
+      }
+
+      //drawMap関数の定義
+      function drawMap() {
+        //自分のプログラムを書く：ここから
+        let x, y;
+        for (y = 0; y < map.length; y++) {
+          for (x = 0; x < map[y].length; x++) {
+            ctx.drawImage(mapItem[map[y][x]], x * 48, y * 48);
+          }
+        }
+
+        //自分のプログラムを書く：ここまで
+      }
+
+      function mainLoop(){
+        drawMap();
+        drawCharacters();
+        if(map[charaObjects[0].y][charaObjects[0].x]==99){
+          alert("Congratulations!!")
+          return
+        }
+        if(map[charaObjects[0].y][charaObjects[0].x]==3){
+          alert("GameOver…")
+          return
+        }
+        setTimeout(mainLoop,100)
+      }
+
+      function main() {
+        //HTML5のキャンバスを準備する処理
+        //ページを読み込んだ際に1度だけbody要素のonload属性から実行される
+
+        canvas = document.getElementById("maincanvas");
+        ctx = canvas.getContext("2d");
+
+        mapItem[0] = document.getElementById("map-water");
+        mapItem[1] = document.getElementById("map-grass");
+        mapItem[2] = document.getElementById("map-forest");
+
+        mapItem[3]=document.getElementById("map-pit")
+        mapItem[99]=document.getElementById("map-grass")
+
+        charaItem[0] = document.getElementById("c1");
+        charaItem[1] = document.getElementById("c2");
+        charaItem[2] = document.getElementById("c3");
+
+        //ここでcharaObjects配列にキャラクタを代入する
+        charaObjects[0]=new Character(2,2,charaItem[0]);
+        charaObjects[1]=new Character(3,3,charaItem[1]);
+        charaObjects[2]=new Character(4,4,charaItem[2]);
+
+        drawMap(); //drawMap関数を実行
+        drawCharacters();
+        // イベントリスナーの追加処理
+        window.addEventListener("keydown", onKeyDown)
+        mainLoop()
+      }
+    </script>
+  </head>
+  <body onload="main();">
+    <!-- キャラ操作用ボタン:ここから-->
+
+    <!--  第8回の動作テスト用： キャラ0番  -->
+    <p>Character 0</p>
+    <button onclick="charaObjects[0].toX--; drawMap(); drawCharacters(); ">
+      ←
+    </button>
+    <button onclick="charaObjects[0].toY--; drawMap(); drawCharacters(); ">
+      ↑
+    </button>
+    <button onclick="charaObjects[0].toY++; drawMap(); drawCharacters(); ">
+      ↓
+    </button>
+    <button onclick="charaObjects[0].toX++; drawMap(); drawCharacters(); ">
+      →
+    </button>
+
+    <!-- キャラ1 -->
+    <p>Character 1</p>
+    <button onclick="charaObjects[1].toX--; drawMap(); drawCharacters(); ">
+      ←
+    </button>
+    <button onclick="charaObjects[1].toY--; drawMap(); drawCharacters(); ">
+      ↑
+    </button>
+    <button onclick="charaObjects[1].toY++; drawMap(); drawCharacters(); ">
+      ↓
+    </button>
+    <button onclick="charaObjects[1].toX++; drawMap(); drawCharacters(); ">
+      →
+    </button>
+
+    <!-- キャラ2 -->
+    <p>Character 2</p>
+    <button onclick="charaObjects[2].toX--; drawMap(); drawCharacters(); ">
+      ←
+    </button>
+    <button onclick="charaObjects[2].toY--; drawMap(); drawCharacters(); ">
+      ↑
+    </button>
+    <button onclick="charaObjects[2].toY++; drawMap(); drawCharacters(); ">
+      ↓
+    </button>
+    <button onclick="charaObjects[2].toX++; drawMap(); drawCharacters(); ">
+      →
+    </button>
+    <!-- キャラ操作用ボタン:ここまで-->
+
+    <br />
+    <canvas
+      id="maincanvas"
+      width="670"
+      height="480"
+      style="border: solid 1px gray"
+    ></canvas>
+    <img src="map-water.png" id="map-water" style="display: none" />
+    <img src="map-grass.png" id="map-grass" style="display: none" />
+    <img src="map-forest.png" id="map-forest" style="display: none" />
+    <img src="map-pit.png" id="map-pit" style="display: none;">
+
+    <img src="c1.png" id="c1" style="display: none" />
+    <img src="c2.png" id="c2" style="display: none" />
+    <img src="c3.png" id="c3" style="display: none" />
+  </body>
+</html>

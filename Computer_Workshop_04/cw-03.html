@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        "use strict";
+        //コンピュータワークショップ4  第3回課題
+        //数当てゲーム　テンプレート
+
+        let answer = 0;   //正解を保持する変数
+        let turn = 0;     //答えた回数を保持する変数
+
+
+        function prepareAnswer() {
+            //ここで正解を作成する
+            answer=Math.floor(Math.random()*100)+1;
+            // alert("回答チェック: "+answer);
+
+        }
+
+        //「回答」ボタンを押すと、このrun()の部分が実行される
+        function run() {
+
+            if(turn<5){
+                let x = parseInt(document.getElementById("valueX").value); //入力値を取得し変数xに代入する
+                if(x==answer){
+                    alert("正解です");
+                    location.reload();
+                }else{
+                    if(x>answer){
+                        alert("答えはもう少し小さな値です");
+                    }else if(x<answer){
+                        alert("答えはもう少し大きな値です");
+                    }
+                }
+                turn++;
+            }else{
+                alert("回数オーバー");
+                location.reload();
+            }
+            //ここに主な処理を記述する
+
+        }
+
+    </script>
+</head>
+
+<body onload="prepareAnswer();">
+    <input type="text" id="valueX" size="5" />
+    <button onclick="run();">回答</button>
+</body>
+
+</html>

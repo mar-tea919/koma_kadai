@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="rensyu.css">
+    <title>フォーム</title>
+  </head>
+  <body>
+    <h1>フォーム</h1>
+    <div>
+      <form action="ex.php" method="post" name="rensyu">
+        <div>
+          <label for="snum">学生番号: <br></label>
+          <input type="text" id="snum" name="studentnumber" placeholder="GKXXXX"/>
+        </div>
+        <div>氏名: <br><input type="text" name="sname" id="studentname" /></div>
+        <div>メール: <br><input type="text" name="email" id="maddress" /></div>
+        <div>
+          <input type="radio" id="sy1" name="grade" value="1" />1年
+          <input type="radio" id="sy2" name="grade" value="2" />2年
+          <input type="radio" id="sy3" name="grade" value="3" />3年
+          <input type="radio" id="sy4" name="grade" value="4" />4年
+        </div>
+        <div>
+          好きな色: <br>
+          <input type="checkbox" id="cred" name="color" value="赤" />赤色
+          <input type="checkbox" id="cblue" name="color" value="青" />青色
+          <input type="checkbox" id="cyellow" name="color" value="黄" />黄色
+          <input type="checkbox" id="cgreen" name="color" value="緑" />緑色
+          <input type="checkbox" id="cpurple" name="color" value="紫" />紫色
+        </div>
+        <div>
+          学部<br>
+          <select name="gakubu" id="faculty">
+            <option value="仏教">仏教学部</option>
+            <option value="文">文学部</option>
+            <option value="経済">経済学部</option>
+            <option value="経営">経営学部</option>
+            <option value="法">法学部</option>
+            <option value="医療健康">医療健康科学部</option>
+            <option value="GMS">GMS学部</option>
+          </select>
+        </div>
+        <div>
+          質問: <br>
+          <textarea
+            name="que"
+            id="question"
+            cols="30"
+            rows="10"
+            placeholder="質問があれば記述してください"
+          ></textarea>
+        </div>
+        <div>
+          <button type="submit" class="btn">送信</button>
+          <button type="reset" class="btn">リセット</button>
+          <button type="button" class="btn">汎用ボタン</button>
+        </div>
+        <div style="padding-top: 5px">
+          <input type="submit" value="送信2" class="btn" />
+          <input type="reset" value="リセット2" class="btn"/>
+          <input type="button" value="汎用2" class="btn"/>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

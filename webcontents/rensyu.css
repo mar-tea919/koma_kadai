@@ -1,0 +1,150 @@
+@charset "utf-8";
+
+html{
+    font-size: 100%;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+h1{
+    color: #3a2b2b;
+    font-size: 3rem;
+}
+
+h1 span{
+    background-color: #018786;
+    color: white;
+    text-decoration: underline;
+    font-size: 2.5rem;
+}
+
+form{
+    display: inline-block;
+    text-align: left;
+}
+
+#intro{
+    color: #442f14;
+    font-size: 1.4rem;
+    margin: 50px 0px 50px;
+    border: 5px solid #018786;
+}
+
+p, th{
+    color: red;
+}
+
+table, tr, th, td{
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid #018786;
+    margin: auto;
+}
+
+ul{
+    padding-left: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li{
+    list-style: none;
+    margin: 15px;
+    background-color: #018786;
+    border-radius: 5px;
+    color: white;
+    width: 100px;
+}
+
+td{
+    margin: 10px;
+}
+
+.circle{
+    border-radius: 50%;
+    border: black solid 3px;
+}
+
+div#header{
+    background-color: #bd8761;
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+}
+
+.goto_pagetop{
+    background-color: #fff;
+    height: 40px;
+    width: 40px;
+    right: 25px;
+    bottom: 25px;
+    position: fixed;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    transition: 0.5s;
+}
+
+.goto_pagetop:hover{
+    border-radius: 43%;
+    background-color: #bd8761;
+    height: 41px;
+    width: 41px;
+}
+
+.goto_pagetop_arrow{
+    height: 12px;
+    width: 12px;
+    border-top: 2px solid #aaa;
+    border-left: 2px solid #aaa;
+    transform: translateY(20%) rotate(45deg);
+}
+
+@media(max-width: 600px){
+    h1{
+        color: #ff0266;
+    }
+
+    ul{
+        flex-direction: column;
+    }
+}
+
+.txtbox{
+    width: 250px;
+}
+
+hr{
+    margin-bottom: 50px;
+}
+
+.btn{
+    list-style: none;
+    text-decoration: none;
+    padding: 15px;
+    background-color: #018786;
+    border-radius: 5px;
+    color: white;
+    width: 100px;
+    border: none;
+}
+
+.btn:hover{
+    background-color: orange;
+}
+
+#husoku{
+    color: red;
+    font-weight: bold;
+}
