@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webコンテンツ基礎 第一回</title>
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="rensyu.css" />
+    <link rel="stylesheet" href="rensyu06.css" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,40 +13,23 @@
     <script src="./script/rensyu.js"></script>
 
     <script>
-      // 演習7
-      console.log("こんにちは")
-      console.log("ここから四則演算")
-      console.log("1+2")
-      console.log("3")
-      console.log(1.5-2)
-      console.log(15*3)
-      console.log(3/2)
-      console.log(3%2)
-
-      // 演習9
-      console.log("ここから変数")
-      let a=10,b=5,c
-      c=a+b
-      console.log(a+"+"+b+"="+c)
-      a=20
-      c=a+b
-      console.log(a+"+"+b+"="+c)
-      a=b+10
-      c=a+b
-      console.log(a+"+"+b+"="+c)
-      console.log(a)
-      a=a+1
-      console.log(a)
-      a++;
-      console.log(a)
-      a+=1
-      console.log(a)
+      window.onload=function(){
+        const animation=document.getElementById("ex-animation")
+        const keyframes={
+          opacity: [0,1],
+          translate: ["0 50px", 0]
+        }
+        const options={
+          duration: 2000,
+          easing: "ease"
+        }
+        animation.animate(keyframes,options)
+      }
     </script>
 
   </head>
   <body>
     <div>
-      
       <div id="header">
         <h1>GK3185 <span>袴田将虎</span></h1>
       </div>
@@ -69,6 +52,9 @@
         <li>経済学部</li>
         <li>GMS学部</li>
       </ul>
+
+      <img src="https://www.komazawa-u.ac.jp/facilities/campus/img/fukazawa_main.jpg" alt="Fukasawa Campus" id="ex-animation" width="250px">
+
       <p>時間割</p>
       <table border="3">
         <tr>
@@ -145,7 +131,7 @@
       </table>
     </div>
     <a class="goto_pagetop" href="#"><div class="goto_pagetop_arrow"></div></a>
-
+    <div class="snow">*</div>
     <div>
       <p>単位数</p>
       <table border="1">

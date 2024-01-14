@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="rensyu.css">
     <title>フォーム</title>
+    <script>
+      window.onload=function(){
+        document.getElementById("btn").onclick=function(){
+          let stnum=document.getElementById("snum").value
+          let stname=document.getElementById("sname").value
+          console.log("学籍番号: "+stnum)
+          console.log("氏名: "+stname)
+          console.log("Mail: "+document.getElementById("maddress").value)
+        }
+      }
+    </script>
   </head>
   <body>
     <h1>フォーム</h1>
@@ -14,7 +25,7 @@
           <label for="snum">学生番号: <br></label>
           <input type="text" id="snum" name="studentnumber" placeholder="GKXXXX"/>
         </div>
-        <div>氏名: <br><input type="text" name="sname" id="studentname" /></div>
+        <div>氏名: <br><input type="text" id="sname" name="studentname" /></div>
         <div>メール: <br><input type="text" name="email" id="maddress" /></div>
         <div>
           <input type="radio" id="sy1" name="grade" value="1" />1年
@@ -55,7 +66,7 @@
         <div>
           <button type="submit" class="btn">送信</button>
           <button type="reset" class="btn">リセット</button>
-          <button type="button" class="btn">汎用ボタン</button>
+          <button type="button" class="btn" id="btn">汎用ボタン</button>
         </div>
         <div style="padding-top: 5px">
           <input type="submit" value="送信2" class="btn" />

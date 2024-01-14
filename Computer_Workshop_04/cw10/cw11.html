@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>コンピュータワークショップ4: 横アクション</title>
+</head>
+<body>
+<script src="enchant.js"></script>
+<script type="text/javascript">
+"use strict";
+enchant();
+
+//
+//グローバル変数を用意する
+let GRAVITY=9.8
+let VELOCITY=50
+//
+let pc;
+let game=new Core(640,480)
+
+
+//読み込む画像を登録
+let ASSETS = [
+	"images/chara1.png",
+	"images/chara6.png",
+	"images/start.png",
+	"images/clear.png",
+	"images/end.png"
+ ];
+game.preload(ASSETS)
+
+
+//ゲームの処理
+game.onload = function() {
+
+	// スタート処理
+	game.pause()
+	let startScene=new Scene()
+	let startLogo=new Sprite(236,48)
+	startLogo.image=game.assets["images/start.png"]
+	startLogo.moveTo(202,200)
+	startLogo.ontouchstart=function(){
+		game.removeScene(startScene)
+		game.resume()
+	}
+	startScene.addChild(startLogo)
+	game.replaceScene(startScene)
+
+	// 終了処理
+	let gameoverScene=new Scene()
+	let gameoverLogo=new Sprite(189,97)
+	gameoverLogo.image=game.assets["images/end.png"]
+	gameoverLogo.moveTo(202,200)
+	gameoverScene.addChild(gameoverLogo)
+
+	let gameclearScene=new Scene()
+	let gameclearLogo=new Sprite(267,48)
+	gameclearLogo.image=game.assets["images/clear.png"]
+	gameclearLogo.moveTo(186,200)
+	gameclearScene.addChild(gameclearLogo)
+
+	let hitpointLabel=new Label("HP: 3")
+	game.rootScene.addChild(hitpointLabel)
+	pc=new Sprite(32,32)
+	pc.hitpoint=3
+	pc.image=game.assets["images/chara1.png"]
+	pc.x=100
+	pc.y=100
+	pc.yspeed=VELOCITY
+	pc.lastHisFame=0
+	pc.onenterframe=function(){
+		this.x++
+		if(this.x>600){
+			game.replaceScene(gameclearScene)
+			game.stop()
+		}
+
+		this.frame++
+		this.frame%=3
+
+		this.y-=this.yspeed
+		this.yspeed-=GRAVITY
+		if(this.y>400){
+			this.y=400
+			this.yspeed=0
+		}
+
+		if(pc.x>600){
+			alert("finish")
+			game.stop()
+		}
+
+	}
+
+	pc.ontouchstart=function(){
+		this.yspeed=VELOCITY
+	}
+
+	game.rootScene.addChild(pc)
+
+	let newenemy
+
+	game.onenterframe=function(){
+		if(Math.random()<0.05){
+			newenemy=new Sprite(32,32)
+			newenemy.speed=Math.floor(Math.random()*10)+2
+			newenemy.x=640
+			newenemy.y=Math.random()*1000
+			newenemy.image=game.assets["images/chara6.png"]
+			newenemy.onenterframe=function(){
+				this.x-=this.speed
+				this.frame++
+				this.frame%=3
+				this.x-=8
+				if(this.x<0){
+					this.scene.removeChild(this)
+				}
+				if(this.within(pc,20)&&(game.frame-pc.lastHisFame)>game.fps/2){
+					console.log("hit: "+game.frame)
+					pc.lastHisFame=game.frame
+					pc.hitpoint--
+					hitpointLabel.text="HP: "+pc.hitpoint
+					if(pc.hitpoint<1){
+						game.replaceScene(gameoverScene)
+						game.stop()
+					}
+				}
+			}
+			game.rootScene.addChild(newenemy)
+
+			if(pc.x==newenemy.x&&pc.y==newenemy.y){
+				alert("lose")
+				game.stop()
+			}
+		}
+	}
+};
+
+//実行開始
+game.start();
+</script>		
+</body>
+</html>

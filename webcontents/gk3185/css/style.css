@@ -1,0 +1,52 @@
+body{
+    font-family: 'Yomogi', cursive;
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+header{
+    text-align: left;
+    background-color: transparent;
+    vertical-align: baseline;
+    padding: 10px;
+}
+
+h1{
+    font-weight: bold;
+}
+
+.logo{
+    max-width: 30%;
+}
+
+.thumb{
+    max-width: 100px;
+}
+
+.contents{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.item{
+    width: 45%;
+    margin: 3px;
+    padding: 3px;
+}
+
+.item img{
+    height: 200px;
+}
+
+.gold{
+    color: gold;
+}
+
+.silver{
+    color: silver;
+}
+
+.bronze{
+    color: brown;
+}
