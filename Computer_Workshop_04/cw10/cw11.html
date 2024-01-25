@@ -85,6 +85,13 @@ game.onload = function() {
 			this.yspeed=0
 		}
 
+		if(this.within(pc,20)&&(game.frame-pc.lastHitFrame)>game.fps/2){
+			console.log("hit: "+game.frame)
+			pc.lastHitFrame=game.frame
+			pc.hitpoint--
+			hitpointLabel.text="HP: "+pc.hitpoint
+		}
+
 		if(pc.x>600){
 			alert("finish")
 			game.stop()
